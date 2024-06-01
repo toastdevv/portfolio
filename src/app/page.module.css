@@ -5,7 +5,7 @@
   gap: 1rem;
 }
 
-@media screen and (max-height: 763px) {
+@media screen and (max-width: 763px) {
   .main {
     grid-template-columns: 10rem 1fr;
     grid-template-rows: 10rem 1fr;
