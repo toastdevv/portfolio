@@ -1,0 +1,6 @@
+.maingrid {
+  display: grid;
+  grid-template-columns: 12rem 1fr;
+  grid-template-rows: 12rem 1fr;
+  gap: 1rem;
+}
