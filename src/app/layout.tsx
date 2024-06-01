@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Analytics } from '@vercel/analytics/react';
 import { Roboto_Mono } from 'next/font/google';
 import './globals.css';
 
@@ -27,7 +28,10 @@ export default function RootLayout({
       <head>
         <link rel="me" href="https://mastodon.social/@rayaneb" />
       </head>
-      <body className={robotto.className}>{children}</body>
+      <body className={robotto.className}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
