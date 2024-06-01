@@ -1,6 +1,13 @@
-.maingrid {
+.main {
   display: grid;
   grid-template-columns: 12rem 1fr;
   grid-template-rows: 12rem 1fr;
   gap: 1rem;
+}
+
+@media screen and (max-height: 763px) {
+  .main {
+    grid-template-columns: 10rem 1fr;
+    grid-template-rows: 10rem 1fr;
+  }
 }

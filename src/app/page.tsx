@@ -36,27 +36,56 @@ export default function Page() {
   const mainRef = useRef<HTMLDivElement | null>(null);
 
   return (
-    <div className="relative flex h-screen w-full items-center justify-center bg-gradient-to-tr from-secondary to-primary" onMouseMove={(e) => {
-      if (mainRef.current) {
-        const el = mainRef.current;
-        el.animate([{
-          transform: `translate(${(e.clientX - (window.innerWidth / 2)) * 0.05}px, ${(e.clientY - (window.innerHeight / 2)) * 0.05}px)`
-        }], {
-          duration: 1000,
-          fill: "forwards"
-        })
-      }
-    }}>
+    <div
+      className="relative flex h-screen w-full items-center justify-center overflow-x-hidden bg-gradient-to-tr from-secondary to-primary"
+      onMouseMove={(e) => {
+        if (mainRef.current) {
+          const el = mainRef.current;
+          if (
+            isMobileAndTouchscreen(true, true) ||
+            isMobileAndTouchscreen(true, false)
+          ) {
+            el.animate(
+              [
+                {
+                  transform: `translate(0px, 0px)`,
+                },
+              ],
+              {
+                duration: 1000,
+                fill: 'forwards',
+              }
+            );
+          } else if (!isMobileAndTouchscreen(true, false)) {
+            el.animate(
+              [
+                {
+                  transform: `translate(${(e.clientX - window.innerWidth / 2) * 0.05}px, ${(e.clientY - window.innerHeight / 2) * 0.05}px)`,
+                },
+              ],
+              {
+                duration: 1000,
+                fill: 'forwards',
+              }
+            );
+          }
+        }
+      }}
+    >
       <Snowfall />
       <motion.div
         initial={{ opacity: 1 }}
         animate={{ opacity: 0 }}
-        className="pointer-events-none absolute left-0 top-0 z-50 h-full w-full bg-secondary"
+        className="pointer-events-none absolute left-0 top-0 z-40 h-full w-full bg-secondary"
       />
-
+      <div className="pointer-events-auto absolute left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-black text-center opacity-100 sm:pointer-events-none sm:opacity-0">
+        <h1 className="text-3xl">
+          Please make sure your phone is in landscape mode
+        </h1>
+      </div>
       <div
-      ref={mainRef}
-        className={`${styles.maingrid} h-full max-h-[36rem] w-full max-w-[66rem] drop-shadow-xl`}
+        ref={mainRef}
+        className={`${styles.main} h-full max-h-[36rem] w-full max-w-[66rem] drop-shadow-xl`}
       >
         <Box>
           <Image
@@ -65,16 +94,17 @@ export default function Page() {
             height={200}
             width={200}
             className="h-full w-full object-cover"
+            priority
           />
         </Box>
 
         <Box>
           <div className="flex h-full w-full flex-col justify-evenly px-8">
-            <h1 className="flex items-center text-4xl font-semibold">
+            <h1 className="flex items-center text-2xl font-semibold md:text-4xl">
               Hey, I&apos;m Rayane Benamre,
             </h1>
 
-            <h1 className="flex items-center text-4xl font-semibold">
+            <h1 className="flex items-center text-2xl font-semibold md:text-4xl">
               A full stack web developer.
             </h1>
           </div>
@@ -109,7 +139,7 @@ export default function Page() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      className="flex h-full flex-col justify-center px-8 py-6"
+                      className="h-full justify-center px-8 py-6 lg:flex lg:flex-col"
                     >
                       <h2 className="mb-4 text-2xl font-medium underline">
                         Introduction
@@ -204,12 +234,12 @@ export default function Page() {
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       key="contact"
-                      className="flex h-full w-full flex-col items-center justify-center px-8 py-6"
+                      className="h-full w-full flex-col items-center justify-center px-8 py-6 lg:flex"
                     >
-                      <h2 className="mb-8 text-3xl font-medium underline">
+                      <h2 className="mb-8 text-center text-3xl font-medium underline">
                         Where you can find me
                       </h2>
-                      <div className="inline-flex flex-wrap gap-2">
+                      <div className="inline-flex w-full flex-wrap justify-center gap-2">
                         <Social
                           link="https://x.com/toastdevv"
                           name="X"
@@ -249,6 +279,14 @@ export default function Page() {
   );
 }
 
+function isMobileAndTouchscreen(mobile: boolean, touchscreen: boolean) {
+  const isTouchScreen =
+    'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  const isMobile = window.matchMedia('(max-width: 1000px)').matches;
+
+  return (touchscreen ? isTouchScreen : true) && (mobile ? isMobile : true);
+}
+
 function Social({
   link,
   name,
@@ -268,8 +306,8 @@ function Social({
       <Image
         src={img}
         alt={name}
-        height={80}
-        width={80}
+        height={76}
+        width={76}
         className="aspect-square object-contain"
       />
       <h3 className="text-xl">{name}</h3>
