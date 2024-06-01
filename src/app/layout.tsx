@@ -7,6 +7,14 @@ const robotto = Roboto_Mono({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Rayane Benamre | Full Stack Web Developer',
   description: 'Rayane Benamre. Full stack web developer.',
+  twitter: {
+    title: 'Rayane Benamre | Full Stack Web Developer',
+    description: 'Rayane Benamre. Full stack web developer.',
+  },
+  openGraph: {
+    title: 'Rayane Benamre | Full Stack Web Developer',
+    description: 'Rayane Benamre. Full stack web developer.',
+  },
 };
 
 export default function RootLayout({
