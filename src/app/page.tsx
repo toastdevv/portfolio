@@ -211,7 +211,7 @@ export default function Page() {
                           'Worked on implementing page metadata around the website',
                           'Fixed various issues around the website',
                           'Implemented client-side notification functionality alongside the team',
-                          "Migrated the website from NextJS' App Router to the Page Router",
+                          "Migrated the website from NextJS' Pages Router to the App Router",
                         ]}
                       />
                       <Job
@@ -220,7 +220,7 @@ export default function Page() {
                         to="October 2023"
                         tasks={[
                           'Worked as a volunteer software engineer, eventually promoted as a software engineering director',
-                          "Migrated the website from NextJS' App Router to the Page Router",
+                          "Migrated the website from NextJS' Pages Router to the App Router",
                           'Fixed various issues around the website',
                           'Led the development of an internal tool',
                         ]}
