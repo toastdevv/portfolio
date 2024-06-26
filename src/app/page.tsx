@@ -251,11 +251,6 @@ export default function Page() {
                           img="/mastodon.svg"
                         />
                         <Social
-                          link="https://instagram.com/@toastdevv"
-                          name="Instagram"
-                          img="/instagram.svg"
-                        />
-                        <Social
                           link="https://www.freelancer.com/u/toastdevv"
                           name="Freelancer"
                           img="/freelancer.svg"
