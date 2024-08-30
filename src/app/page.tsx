@@ -149,15 +149,7 @@ export default function Page() {
                         based in Morocco who loves building awesome web
                         applications. I have experience with the MERN stack,
                         Next.js, Svelte, and a bunch of other cool technologies.
-                        Right now, I&apos;m working at{' '}
-                        <a
-                          href="https://www.inquisitionplatform.com/"
-                          className="underline"
-                        >
-                          Inquisition
-                        </a>
-                        , a super exciting platform that brings experts and
-                        enthusiasts together. Excited to meet you!
+                        Excited to meet you!
                       </p>
                     </motion.div>
                   );
