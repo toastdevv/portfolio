@@ -187,7 +187,7 @@ export default function Page() {
                       <Job
                         title="Inquisition"
                         from="Apr 2024"
-                        to="Present"
+                        to="Aug 2024"
                         tasks={[
                           'Worked with the team on building the landing page',
                           'Currently working on developing the platform',
